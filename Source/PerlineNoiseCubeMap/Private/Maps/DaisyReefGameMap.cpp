@@ -69,6 +69,19 @@ TArray<ADaisyReefMapElement*> ADaisyReefGameMap::GenerateMap(const int MapWidthX
 								NewPerlinNoiseMap.Add(NewMapElement);
 							}
 						}
+						else if (z <= MapObjectClass.GetDefaultObject()->MapProperties.SeaLevel && z > FMath::RoundToInt(FMath::GetMappedRangeValueClamped(FVector2D(-1, 1), FVector2D(0, Height), PerlinValue)))
+						{
+							ADaisyReefMapElement* NewMapElement = GetWorld()->SpawnActor<ADaisyReefMapElement>(
+							MapObjectClass.GetDefaultObject()->MapElementWater, NewElementLocation, FRotator::ZeroRotator, SpawnInfo);
+
+							if (NewMapElement)
+							{
+								UGameplayStatics::FinishSpawningActor(NewMapElement,
+																	  FTransform(
+																		  FRotator::ZeroRotator, NewElementLocation));
+								NewPerlinNoiseMap.Add(NewMapElement);
+							}
+						}
 					}
 				}
 			}

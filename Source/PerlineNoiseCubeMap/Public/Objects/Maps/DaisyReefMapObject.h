@@ -82,5 +82,8 @@ public:
 	FMapNoiseProperties MapNoiseProperties;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="DaisyReef|MapElementsProperties")
+	TSubclassOf<ADaisyReefMapElement> MapElementWater;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="DaisyReef|MapElementsProperties")
 	TArray<FMapElement> MapElements;
 };
